@@ -1,9 +1,12 @@
 import Vue from 'vue';
-import Button from './button';
-import Icon from './icon';
+import Button from './Button';
+import Icon from './Icon';
+import ButtonGroup from './ButtonGroup.vue';
 
 Vue.component('o-button', Button);
 Vue.component('o-icon', Icon);
+Vue.component('o-button-group', ButtonGroup);
+
 new Vue({
   el: '#app',
   data: {
