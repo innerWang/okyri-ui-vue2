@@ -1,0 +1,11 @@
+{
+  "name": "okyri-ui-vue2",
+  "version": "0.0.1",
+  "description": "ui library based on vue2 ",
+  "main": "index.js",
+  "author": "innerwang",
+  "license": "MIT",
+  "dependencies": {
+    "vue": "^2.6.11"
+  }
+}
