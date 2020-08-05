@@ -31,18 +31,23 @@
   </head>
   <body>
     <div id="app">
-      <o-button icon="set" icon-position="right">
+      <o-button
+        icon="set"
+        icon-position="right"
+        :loading="loading1"
+        @click="loading1 = !loading1"
+      >
         按钮
       </o-button>
-      <o-button icon="set">
+      <o-button icon="set" :loading="loading2" @click="loading2 = !loading2">
         按钮
       </o-button>
-      <o-button>
+      <o-button :loading="loading3" @click="loading3 = !loading3">
         按钮
       </o-button>
       <o-icon name="download"></o-icon>
     </div>
     <script src="./src/app.js"></script>
-    <script src="//at.alicdn.com/t/font_1988752_h8pdj0l22ku.js"></script>
+    <script src="//at.alicdn.com/t/font_1988752_t70vpl0jqt.js"></script>
   </body>
 </html>

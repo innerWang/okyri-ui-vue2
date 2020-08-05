@@ -1,6 +1,11 @@
 <template>
-  <button class="o-button" :class="{ [`icon-${iconPosition}`]: true }">
-    <o-icon class="icon" v-if="icon" :name="icon"></o-icon>
+  <button
+    class="o-button"
+    :class="{ [`icon-${iconPosition}`]: true }"
+    @click="$emit('click')"
+  >
+    <o-icon class="icon" v-if="icon && !loading" :name="icon"></o-icon>
+    <o-icon class="loading icon" v-if="loading" name="loading"></o-icon>
     <div class="content">
       <slot></slot>
     </div>
@@ -11,6 +16,10 @@
 export default {
   props: {
     icon: {},
+    loading: {
+      type: Boolean,
+      default: false,
+    },
     iconPosition: {
       type: String,
       default: 'left',
@@ -63,6 +72,19 @@ export default {
     }
     > .content {
       order: 1;
+    }
+  }
+
+  .loading {
+    animation: spinning 1.5s linear infinite;
+  }
+
+  @keyframes spinning {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(360deg);
     }
   }
 }
