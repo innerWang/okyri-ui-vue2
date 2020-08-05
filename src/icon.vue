@@ -1,5 +1,5 @@
 <template>
-  <svg class="okyri-icon">
+  <svg class="o-icon">
     <use :xlink:href="`#i-${name}`"></use>
   </svg>
 </template>
@@ -15,7 +15,7 @@ export default {
 </script>
 
 <style lang="scss">
-.okyri-icon {
+.o-icon {
   width: 1em;
   height: 1em;
 }

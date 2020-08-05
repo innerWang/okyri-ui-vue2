@@ -1,6 +1,6 @@
 <template>
-  <button class="okyri-button" :class="{ [`icon-${iconPosition}`]: true }">
-    <okyri-icon class="icon" v-if="icon" :name="icon"></okyri-icon>
+  <button class="o-button" :class="{ [`icon-${iconPosition}`]: true }">
+    <o-icon class="icon" v-if="icon" :name="icon"></o-icon>
     <div class="content">
       <slot></slot>
     </div>
@@ -14,16 +14,16 @@ export default {
     iconPosition: {
       type: String,
       default: 'left',
-      validator: function(value) {
+      validator: function (value) {
         return ['left', 'right'].indexOf(value) !== -1;
-      }
-    }
-  }
+      },
+    },
+  },
 };
 </script>
 
 <style lang="scss">
-.okyri-button {
+.o-button {
   display: inline-flex;
   justify-content: center;
   align-items: center;
