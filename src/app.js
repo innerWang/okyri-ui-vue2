@@ -17,7 +17,9 @@ new Vue({
 });
 
 import chai from 'chai';
+import spies from 'chai-spies';
 const { expect } = chai;
+chai.use(spies);
 {
   // Vue.extend 会使用基础 Vue 构造器 ，创建一个子类，其参数是包含组件选项的对象
   const ButtonConstructor = Vue.extend(Button);
@@ -79,6 +81,23 @@ const { expect } = chai;
   const svg = vm.$el.querySelector('svg');
   const { order } = window.getComputedStyle(svg);
   expect(order).to.eq('2');
+  vm.$el.remove();
+  vm.$destroy();
+}
+{
+  // 函数的mock
+  const ButtonConstructor = Vue.extend(Button);
+  const vm = new ButtonConstructor({
+    propsData: {
+      icon: 'set',
+      loading: true,
+    },
+  }).$mount();
+  const spy = chai.spy(function () {});
+  vm.$on('click', spy);
+  // 模拟一次在按钮上的点击
+  vm.$el.click();
+  expect(spy).to.have.been.called();
   vm.$el.remove();
   vm.$destroy();
 }
