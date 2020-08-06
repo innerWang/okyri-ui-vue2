@@ -5,6 +5,10 @@
       type="text"
       :disabled="disabled"
       :readonly="readonly"
+      @change="$emit('change', $event)"
+      @focus="$emit('change', $event)"
+      @blur="$emit('change', $event)"
+      @input="$emit('change', $event)"
     />
     <template v-if="error">
       <Icon name="error" class="icon-error"></Icon>

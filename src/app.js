@@ -16,4 +16,9 @@ new Vue({
     loading2: true,
     loading3: false,
   },
+  methods: {
+    handleInputChange(e) {
+      console.log(e.target.value);
+    },
+  },
 });
