@@ -2,13 +2,14 @@
   "name": "okyri-ui-vue2",
   "version": "0.0.1",
   "description": "ui library based on vue2 ",
-  "main": "index.js",
+  "main": "lib/index.js",
   "author": "innerwang",
   "license": "MIT",
   "scripts": {
     "start": "parcel index.html --no-cache",
     "dev-test": "parcel watch test/* --no-cache & karma start",
-    "test": "parcel build test/* --no-cache --no-minify && karma start --single-run"
+    "test": "parcel build test/* --no-cache --no-minify && karma start --single-run",
+    "build": "parcel build index.js --no-cache --no-minify -d lib"
   },
   "dependencies": {
     "vue": "^2.6.11",
