@@ -51,7 +51,7 @@ try {
     }).$mount();
     const useEle = vm.$el.querySelector('use');
     const href = useEle.getAttribute('xlink:href');
-    expect(href).to.eq('#i-loading1');
+    expect(href).to.eq('#i-loading');
     vm.$el.remove();
     vm.$destroy();
   }
