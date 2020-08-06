@@ -31,30 +31,39 @@
   </head>
   <body>
     <div id="app">
-      <o-button
-        icon="settings"
-        icon-position="right"
-        :loading="loading1"
-        @click="loading1 = !loading1"
-      >
-        按钮
-      </o-button>
-      <o-button
-        icon="settings"
-        :loading="loading2"
-        @click="loading2 = !loading2"
-      >
-        按钮
-      </o-button>
-      <o-button :loading="loading3" @click="loading3 = !loading3">
-        按钮
-      </o-button>
-      <o-icon name="download"></o-icon>
-      <o-button-group>
-        <o-button icon="left">后退</o-button>
-        <o-button>更多</o-button>
-        <o-button icon="right" icon-position="right">前进</o-button>
-      </o-button-group>
+      <div>
+        <o-input value="李梅" error="姓名不能少于两个字"></o-input>
+      </div>
+      <o-input value="王五"></o-input>
+      <o-button icon="left">后退</o-button>
+      <o-input value="张三" disabled></o-input>
+      <o-input value="邓四" readonly></o-input>
+      <div style="margin-top: 20px;">
+        <o-button
+          icon="settings"
+          icon-position="right"
+          :loading="loading1"
+          @click="loading1 = !loading1"
+        >
+          按钮
+        </o-button>
+        <o-button
+          icon="settings"
+          :loading="loading2"
+          @click="loading2 = !loading2"
+        >
+          按钮
+        </o-button>
+        <o-button :loading="loading3" @click="loading3 = !loading3">
+          按钮
+        </o-button>
+        <o-icon name="download"></o-icon>
+        <o-button-group>
+          <o-button icon="left">后退</o-button>
+          <o-button>更多</o-button>
+          <o-button icon="right" icon-position="right">前进</o-button>
+        </o-button-group>
+      </div>
     </div>
     <script src="./src/app.js"></script>
   </body>

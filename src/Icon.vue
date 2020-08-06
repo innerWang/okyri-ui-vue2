@@ -5,8 +5,9 @@
 </template>
 
 <script>
-import './svg'
+import './svg';
 export default {
+  name: 'OkyriIcon',
   props: {
     name: {
       type: String,
@@ -15,7 +16,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .o-icon {
   width: 1em;
   height: 1em;

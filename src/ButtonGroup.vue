@@ -6,6 +6,7 @@
 
 <script>
 export default {
+  name: 'OkyriButtonGroup',
   mounted() {
     for (let ele of this.$el.children) {
       const tag = ele.nodeName.toLowerCase();
@@ -19,7 +20,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .o-button-group {
   display: inline-flex;
   vertical-align: middle; // 为了和外面的其他元素对齐

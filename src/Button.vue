@@ -15,6 +15,7 @@
 <script>
 import Icon from './Icon';
 export default {
+  name: 'OkyriButton',
   props: {
     icon: {},
     loading: {
@@ -35,7 +36,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .o-button {
   display: inline-flex;
   justify-content: center;
