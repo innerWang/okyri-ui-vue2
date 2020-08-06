@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import Icon from './Icon';
 export default {
   props: {
     icon: {},
@@ -27,6 +28,9 @@ export default {
         return ['left', 'right'].indexOf(value) !== -1;
       },
     },
+  },
+  components: {
+    'o-icon': Icon, // 局部注册 o-icon，否则单文件测试时找不到 o-icon
   },
 };
 </script>
