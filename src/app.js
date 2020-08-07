@@ -15,26 +15,12 @@ new Vue({
     loading1: false,
     loading2: true,
     loading3: false,
+    message: '',
   },
-  created() {
-    setTimeout(() => {
-      const event = new Event('change');
-      let inputEle = this.$el.querySelector('input');
-      inputEle.dispatchEvent(event);
-    }, 3000);
-  },
+  created() {},
   methods: {
-    handleInputChange(e) {
-      console.log(e);
-    },
-    handleInputInput(e) {
-      console.log(e);
-    },
-    handleInputFocus(e) {
-      console.log(e);
-    },
-    handleInputBlur(e) {
-      console.log(e);
+    handleClickBtn() {
+      this.message += '1';
     },
   },
 });

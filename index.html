@@ -32,13 +32,9 @@
   <body>
     <div id="app">
       <div>
-        <o-input
-          value="李梅"
-          @change="handleInputChange"
-          @input="handleInputInput"
-          @focus="handleInputFocus"
-          @blur="handleInputBlur"
-        ></o-input>
+        <o-input v-model="message"></o-input>
+        <p>{{message}}</p>
+        <o-button @click="handleClickBtn"> 给输入框后面 +1 </o-button>
       </div>
 
       <div style="margin-top: 20px;">

@@ -76,9 +76,12 @@ describe('Input', () => {
         vm.$on(evName, callback);
         // 触发事件
         const event = new Event(evName);
+        Object.defineProperty(event, 'target', {
+          value: { value: 'hi', enumerable: true },
+        });
         let inputEle = vm.$el.querySelector('input');
         inputEle.dispatchEvent(event);
-        expect(callback).to.have.been.calledWith(event);
+        expect(callback).to.have.been.calledWith(event.target.value);
       });
     });
   });
