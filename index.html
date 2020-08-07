@@ -32,12 +32,15 @@
   <body>
     <div id="app">
       <div>
-        <o-input value="李梅" @change="handleInputChange"></o-input>
+        <o-input
+          value="李梅"
+          @change="handleInputChange"
+          @input="handleInputInput"
+          @focus="handleInputFocus"
+          @blur="handleInputBlur"
+        ></o-input>
       </div>
-      <o-input value="王五"></o-input>
-      <o-button icon="left">后退</o-button>
-      <o-input value="张三" disabled></o-input>
-      <o-input value="邓四" readonly></o-input>
+
       <div style="margin-top: 20px;">
         <o-button
           icon="settings"
