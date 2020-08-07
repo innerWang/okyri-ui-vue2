@@ -31,13 +31,34 @@
   </head>
   <body>
     <div id="app">
+      <div :style="{border: '1px solid black'}">
+        <o-row gutter="20">
+          <o-col>1</o-col>
+          <o-col>1</o-col>
+        </o-row>
+        <o-row gutter="20">
+          <o-col>1</o-col>
+          <o-col>1</o-col>
+          <o-col>1</o-col>
+        </o-row>
+        <o-row gutter="20">
+          <o-col span="2">1</o-col>
+          <!-- 使用v-bind，让双引号里边的内容是一个js表达式，此时传值就是数字 -->
+          <o-col :span="18" offset="4">1</o-col>
+        </o-row>
+        <o-row gutter="20">
+          <o-col span="4">1</o-col>
+          <o-col span="18" offset="2">1</o-col>
+        </o-row>
+      </div>
+      <br /><br /><br />
       <div>
         <o-input v-model="message"></o-input>
         <p>{{message}}</p>
         <o-button @click="handleClickBtn"> 给输入框后面 +1 </o-button>
       </div>
-
-      <div style="margin-top: 20px;">
+      <br /><br /><br />
+      <div>
         <o-button
           icon="settings"
           icon-position="right"
