@@ -24,66 +24,63 @@
       body {
         font-size: var(--font-size);
       }
+      img {
+        max-width: 100%;
+      }
       #app {
         margin: 20px;
+      }
+    </style>
+    <style>
+      .demoBox {
+        min-height: 50px;
+        background: grey;
+        border: 1px solid red;
+      }
+      .logo-wrapper {
+        padding: 10px;
       }
     </style>
   </head>
   <body>
     <div id="app">
-      <div :style="{border: '1px solid black'}">
-        <o-row gutter="20">
-          <o-col>1</o-col>
-          <o-col>1</o-col>
-        </o-row>
-        <o-row gutter="20">
-          <o-col>1</o-col>
-          <o-col>1</o-col>
-          <o-col>1</o-col>
-        </o-row>
-        <o-row gutter="20">
-          <o-col span="2">1</o-col>
-          <!-- 使用v-bind，让双引号里边的内容是一个js表达式，此时传值就是数字 -->
-          <o-col :span="18" offset="4">1</o-col>
-        </o-row>
-        <o-row gutter="20">
-          <o-col span="4">1</o-col>
-          <o-col span="18" offset="2">1</o-col>
-        </o-row>
-      </div>
-      <br /><br /><br />
-      <div>
-        <o-input v-model="message"></o-input>
-        <p>{{message}}</p>
-        <o-button @click="handleClickBtn"> 给输入框后面 +1 </o-button>
-      </div>
-      <br /><br /><br />
-      <div>
-        <o-button
-          icon="settings"
-          icon-position="right"
-          :loading="loading1"
-          @click="loading1 = !loading1"
-        >
-          按钮
-        </o-button>
-        <o-button
-          icon="settings"
-          :loading="loading2"
-          @click="loading2 = !loading2"
-        >
-          按钮
-        </o-button>
-        <o-button :loading="loading3" @click="loading3 = !loading3">
-          按钮
-        </o-button>
-        <o-icon name="download"></o-icon>
-        <o-button-group>
-          <o-button icon="left">后退</o-button>
-          <o-button>更多</o-button>
-          <o-button icon="right" icon-position="right">前进</o-button>
-        </o-button-group>
-      </div>
+      <o-row class="topbar">
+        <o-col class="demoBox" span="9">
+          <o-row align="left">
+            <o-col>1</o-col>
+            <o-col>2</o-col>
+            <o-col>3</o-col>
+            <o-col>4</o-col>
+          </o-row>
+        </o-col>
+        <o-col class="demoBox" span="15">
+          <o-row align="right">
+            <o-col>1</o-col>
+            <o-col>2</o-col>
+            <o-col>3</o-col>
+            <o-col>4</o-col>
+            <o-col>5</o-col>
+            <o-col>6</o-col>
+            <o-col>7</o-col>
+          </o-row>
+        </o-col>
+      </o-row>
+      <o-row class="log-and-search-and-qrcode">
+        <o-col class="demoBox" span="4">
+          <o-row align="center">
+            <o-col>
+              <div class="logo-wrapper">
+                <img
+                  src="https://th.bing.com/th/id/OIP.LigmpGu0K01Ox12wF2oO9QHaF7?pid=Api&rs=1"
+                  alt=""
+                />
+              </div>
+            </o-col>
+          </o-row>
+        </o-col>
+        <o-col class="demoBox" span="14"></o-col>
+        <o-col class="demoBox" span="6"></o-col>
+      </o-row>
     </div>
     <script src="./src/app.js"></script>
   </body>
