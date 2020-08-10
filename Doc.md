@@ -30,6 +30,9 @@
 1. 项目目录内运行 `yarn link`
 2. 使用该项目的目录下运行 `yarn link xxx`
 
+自适应： flex 布局
+响应式： 检测屏幕宽度
+
 ## 疑问
 
 1. yarn build 编译完，通过 yarn link 在 vue-cli 创建的项目 demo1 中引用，会报 eslint 错误，在 demo1 中根目录添加 .eslintignore，将 node_modules 加入，可以编译通过，但是会告警，`warning in ../okyri-ui-vue2/lib/index.js , Critical dependency: the request of a dependency is an expression`

@@ -27,10 +27,43 @@
       #app {
         margin: 20px;
       }
+
+      .demo {
+        height: 30px;
+        border: 1px solid #666;
+        background: #999;
+      }
     </style>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <o-row>
+        <o-col span="24" :ipad="{span: 6}" :narrow-pc="{span: 5}">
+          <div class="demo">1</div>
+        </o-col>
+        <o-col
+          span="24"
+          :ipad="{span: 5, offset: 1}"
+          :narrow-pc="{span: 5, offset: 1}"
+        >
+          <div class="demo">1</div>
+        </o-col>
+        <o-col
+          span="24"
+          :ipad="{span: 5, offset: 1}"
+          :narrow-pc="{span: 5, offset: 1}"
+        >
+          <div class="demo">1</div>
+        </o-col>
+        <o-col
+          span="24"
+          :ipad="{span: 5, offset: 1}"
+          :narrow-pc="{span: 5, offset: 2}"
+        >
+          <div class="demo">1</div>
+        </o-col>
+      </o-row>
+    </div>
     <script src="./src/app.js"></script>
   </body>
 </html>
