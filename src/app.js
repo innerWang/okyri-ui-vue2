@@ -29,29 +29,29 @@ Vue.use(plugin);
 
 new Vue({
   el: '#app',
-  data: {
-    loading1: false,
-    loading2: true,
-    loading3: false,
-    message: '',
-  },
+  data: {},
   created() {},
   methods: {
-    handleClickBtn() {
-      this.showMessage();
+    handleClickBtn1() {
+      this.showMessage('top');
     },
-    showMessage() {
-      this.$toast('<strong>toash message</strong>', {
-        // 若只设置部分属性，并不会和默认的属性去合并
+    handleClickBtn2() {
+      this.showMessage('bottom');
+    },
+    handleClickBtn3() {
+      this.showMessage('middle');
+    },
+    showMessage(position) {
+      this.$toast('<strong>toast message</strong>', {
+        // 若只设置prop 是对象的部分属性，并不会和默认的属性取值去合并
         closeButton: {
           text: 'OK',
           callback: () => {
-            console.log('用户说 OK');
+            console.log(' 调用回调 ');
           },
         },
-        autoClose: false,
         enableHtml: true,
-        position: 'middle',
+        position: position,
       });
     },
   },

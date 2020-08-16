@@ -1,13 +1,15 @@
 <template>
-  <div class="toast" ref="toast" :class="toastClasses">
-    <div class="message">
-      <slot v-if="!enableHtml"></slot>
-      <div v-else v-html="$slots.default[0]"></div>
+  <div class="wrapper" :class="toastClasses">
+    <div class="toast" ref="toast">
+      <div class="message">
+        <slot v-if="!enableHtml"></slot>
+        <div v-else v-html="$slots.default[0]"></div>
+      </div>
+      <span class="line" ref="line"></span>
+      <span v-if="closeButton" class="close" @click="onClickClose">
+        {{ closeButton.text }}
+      </span>
     </div>
-    <span class="line" ref="line"></span>
-    <span v-if="closeButton" class="close" @click="onClickClose">
-      {{ closeButton.text }}
-    </span>
   </div>
 </template>
 
@@ -93,10 +95,65 @@ $toast-box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
 $toast-border-radius: 4px;
 $toast-padding: 0 16px;
 $toast-min-height: 40px;
+$animation-duration: 300ms;
 
-.toast {
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+@keyframes slide-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.wrapper {
   position: fixed;
   left: 50%;
+  transform: translateX(-50%);
+  &.position-top {
+    top: 20px;
+    .toast {
+      animation: slide-down $animation-duration;
+    }
+  }
+  &.position-bottom {
+    bottom: 20px;
+    .toast {
+      animation: slide-up $animation-duration;
+    }
+  }
+  &.position-middle {
+    top: 50%;
+    transform: translate(-50%, -50%);
+    .toast {
+      animation: fade-in $animation-duration;
+    }
+  }
+}
+
+.toast {
   display: flex;
   align-items: center;
   padding: $toast-padding;
@@ -104,7 +161,6 @@ $toast-min-height: 40px;
   color: $toast-color;
   font-size: $font-size;
   line-height: 1.8;
-  transform: translateX(-50%);
   background-color: $toast-bg;
   border-radius: $toast-border-radius;
   box-shadow: $toast-box-shadow;
@@ -119,17 +175,6 @@ $toast-min-height: 40px;
   }
   .close {
     flex-shrink: 0;
-  }
-
-  &.position-top {
-    top: 20px;
-  }
-  &.position-bottom {
-    bottom: 20px;
-  }
-  &.position-middle {
-    top: 50%;
-    transform: translate(-50%, -50%);
   }
 }
 </style>
