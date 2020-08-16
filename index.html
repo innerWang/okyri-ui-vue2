@@ -24,58 +24,11 @@
       body {
         font-size: var(--font-size);
       }
-
-      .sider {
-        background: #333;
-        width: 100px;
-      }
-
-      .header {
-        height: 100px;
-        background: #999;
-      }
-      .footer {
-        height: 100px;
-        background: #999;
-      }
     </style>
   </head>
   <body>
     <div id="app">
-      <o-layout style="height: 100vh;">
-        <o-sider>sider</o-sider>
-        <o-layout>
-          <o-header>header</o-header>
-          <o-content>content</o-content>
-          <o-footer>footer</o-footer>
-        </o-layout>
-      </o-layout>
-      <!-- <o-row>
-        <o-col span="24" :ipad="{span: 6}" :narrow-pc="{span: 5}">
-          <div class="demo">1</div>
-        </o-col>
-        <o-col
-          span="24"
-          :ipad="{span: 5, offset: 1}"
-          :narrow-pc="{span: 5, offset: 1}"
-        >
-          <div class="demo">1</div>
-        </o-col>
-        <o-col
-          span="24"
-          :ipad="{span: 5, offset: 1}"
-          :narrow-pc="{span: 5, offset: 1}"
-        >
-          <div class="demo">1</div>
-        </o-col>
-        <o-col
-          span="24"
-          :ipad="{span: 5, offset: 1}"
-          :narrow-pc="{span: 5, offset: 2}"
-        >
-          <div class="demo">1</div>
-        </o-col>
-      </o-row> -->
+      <o-button @click="handleClickBtn"> 点我</o-button>
     </div>
     <script src="./src/app.js"></script>
   </body>

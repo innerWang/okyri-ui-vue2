@@ -10,6 +10,8 @@ import Header from './Header';
 import Footer from './Footer';
 import Sider from './Sider';
 import Content from './Content';
+import Toast from './Toast.vue';
+import plugin from './plugin';
 
 Vue.component('o-button', Button);
 Vue.component('o-icon', Icon);
@@ -22,6 +24,8 @@ Vue.component('o-header', Header);
 Vue.component('o-footer', Footer);
 Vue.component('o-content', Content);
 Vue.component('o-sider', Sider);
+Vue.component('o-toast', Toast);
+Vue.use(plugin);
 
 new Vue({
   el: '#app',
@@ -34,7 +38,7 @@ new Vue({
   created() {},
   methods: {
     handleClickBtn() {
-      this.message += '1';
+      this.$toast('toash message');
     },
   },
 });
