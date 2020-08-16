@@ -44,7 +44,9 @@ new Vue({
           console.log('用户说 OK');
         },
       },
+      autoClose: false,
       enableHtml: true,
+      position: 'bottom',
     });
   },
   methods: {
