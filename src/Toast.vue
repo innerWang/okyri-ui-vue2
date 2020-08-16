@@ -72,6 +72,7 @@ export default {
     },
     close() {
       this.$el.remove(); // 将元素从其所在的树移除
+      this.$emit('close');
       this.$destroy(); // 将组件绑定的事件等取消掉，该操作不会将元素从页面移除
     },
     onClickClose() {
