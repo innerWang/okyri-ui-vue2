@@ -35,10 +35,19 @@ new Vue({
     loading3: false,
     message: '',
   },
-  created() {},
+  created() {
+    this.$toast('<strong>toash message</strong>', {
+      // 若只设置部分属性，并不会和默认的属性去合并
+      closeButton: {
+        text: 'OK',
+        callback: () => {
+          console.log('用户说 OK');
+        },
+      },
+      enableHtml: true,
+    });
+  },
   methods: {
-    handleClickBtn() {
-      this.$toast('toash message');
-    },
+    handleClickBtn() {},
   },
 });
