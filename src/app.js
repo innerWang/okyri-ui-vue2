@@ -12,6 +12,11 @@ import Sider from './Sider';
 import Content from './Content';
 import Toast from './Toast.vue';
 import plugin from './plugin';
+import Tabs from './Tabs';
+import TabsBody from './TabsBody';
+import TabsHead from './TabsHead';
+import TabsItem from './TabsItem';
+import TabsPane from './TabsPane';
 
 Vue.component('o-button', Button);
 Vue.component('o-icon', Icon);
@@ -26,10 +31,17 @@ Vue.component('o-content', Content);
 Vue.component('o-sider', Sider);
 Vue.component('o-toast', Toast);
 Vue.use(plugin);
+Vue.component('o-tabs', Tabs);
+Vue.component('o-tabs-head', TabsHead);
+Vue.component('o-tabs-body', TabsBody);
+Vue.component('o-tabs-item', TabsItem);
+Vue.component('o-tabs-pane', TabsPane);
 
 new Vue({
   el: '#app',
-  data: {},
+  data: {
+    selectedTab: 'rank',
+  },
   created() {},
   methods: {
     handleClickBtn1() {
