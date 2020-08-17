@@ -7,6 +7,8 @@
 <script>
 export default {
   name: 'OkyriTabsBody',
+  inject: ['eventBus'],
+  mounted() {},
 };
 </script>
 

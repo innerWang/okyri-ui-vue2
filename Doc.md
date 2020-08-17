@@ -33,6 +33,23 @@
 自适应： flex 布局
 响应式： 检测屏幕宽度
 
+## 知识点
+
+使用 `.sync` 进行组件的 prop 的双向绑定，组件内部实现`this.$emit('update:prop1', 'xxxx')`的逻辑来触发 prop 更新。
+
+若组件有定义 class，引用组件时也定义了 class， 则 Vue 会默认将组件的 class 进行合并，style 属性同理，仅有这两个属性可以。
+
+使用单独的事件中心 [EventBus / EventHub](https://cn.vuejs.org/v2/guide/migration.html#dispatch-%E5%92%8C-broadcast-%E6%9B%BF%E6%8D%A2) 来管理组件间的通信；使用 provide 来向所有子孙后代注入一个依赖(含数据和方法)，子孙组件通过 inject 选项来接收指定的想要添加在这个实例上的属性，此种设计与 React.contect 类似。
+
+事件在哪个对象上触发的就需要在哪个对象上监听，Vue 组件的事件不会冒泡，但是 DOM 的事件会冒泡。
+
+为什么一个 `new Vue()` 可以构造出一个 eventBus ？
+
+- Vue 实例包含有 `$on`、`$off`、 `$emit` 等方法
+- 事件中心需要满足有 `on`、`off`、 `emit` 等方法
+
+需要用户传值时使用 props，组件内部数据使用 data，类似 state。
+
 ## 疑问
 
 1. yarn build 编译完，通过 yarn link 在 vue-cli 创建的项目 demo1 中引用，会报 eslint 错误，在 demo1 中根目录添加 .eslintignore，将 node_modules 加入，可以编译通过，但是会告警，`warning in ../okyri-ui-vue2/lib/index.js , Critical dependency: the request of a dependency is an expression`
