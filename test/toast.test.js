@@ -25,7 +25,7 @@ describe('Toast', () => {
         done();
       });
     });
-    it('接收 closeButton ', () => {
+    it('接收 closeButton ', (done) => {
       const callback = sinon.fake();
       const Constructor = Vue.extend(Toast);
       const vm = new Constructor({
@@ -39,8 +39,11 @@ describe('Toast', () => {
       const closeBtn = vm.$el.querySelector('.close');
       // 使用 textContent 读取节点的文本及其后代
       expect(closeBtn.textContent.trim()).to.eq('确认');
-      closeBtn.click();
-      expect(callback).to.have.been.called;
+      setTimeout(() => {
+        closeBtn.click();
+        expect(callback).to.have.been.called;
+        done();
+      }, 200);
     });
     it('接收 enableHtml ', () => {
       const Constructor = Vue.extend(Toast);
