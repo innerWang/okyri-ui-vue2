@@ -34,6 +34,21 @@ export default {
     };
   },
   mounted() {
+    // $children 只能获取到子组件
+    if (this.$children.length === 0) {
+      console &&
+        console.warn &&
+        console.warn(
+          'tabs 的子组件应该是 tabs-head 和 tabs-body，但你没写子组件'
+        );
+    }
+    for (let child of this.$children) {
+      if (
+        ['OkyriTabsHead', 'OkyriTabsBody'].indexOf(child.$options.name) === -1
+      ) {
+        throw new Error('tabs 的子组件只能是 tabs-head 和 tabs-body');
+      }
+    }
     this.$children.forEach((vm) => {
       if (vm.$options.name === 'OkyriTabsHead') {
         vm.$children.forEach((childVm) => {
@@ -50,7 +65,4 @@ export default {
 };
 </script>
 
-<style>
-.tabs {
-}
-</style>
+<style lang="scss" scoped></style>

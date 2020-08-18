@@ -27,9 +27,11 @@ export default {
     },
   },
   created() {
-    this.eventBus.$on('update:selected', (name) => {
-      this.active = name === this.name;
-    });
+    if (this.eventBus) {
+      this.eventBus.$on('update:selected', (name) => {
+        this.active = name === this.name;
+      });
+    }
   },
 };
 </script>
@@ -37,7 +39,5 @@ export default {
 <style lang="scss" scoped>
 .tabs-pane {
   padding: 1em;
-  &.active {
-  }
 }
 </style>

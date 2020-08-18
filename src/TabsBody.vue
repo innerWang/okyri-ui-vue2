@@ -8,11 +8,7 @@
 export default {
   name: 'OkyriTabsBody',
   inject: ['eventBus'],
-  mounted() {},
 };
 </script>
 
-<style>
-.tabs-body {
-}
-</style>
+<style lang="scss" scoped></style>

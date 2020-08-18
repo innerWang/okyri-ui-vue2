@@ -13,12 +13,14 @@ export default {
   name: 'OkyriTabsHead',
   inject: ['eventBus'],
   mounted() {
-    this.eventBus.$on('update:selected', (item, vm) => {
-      let { width, left } = vm.$el.getBoundingClientRect();
-      this.$refs.line.style.width = `${width}px`;
-      //  使用 transform 可以进行硬件加速，但是会引入其他问题
-      this.$refs.line.style.left = `${left}px`;
-    });
+    if (this.eventBus) {
+      this.eventBus.$on('update:selected', (item, vm) => {
+        let { width, left } = vm.$el.getBoundingClientRect();
+        this.$refs.line.style.width = `${width}px`;
+        //  使用 transform 可以进行硬件加速，但是会引入其他问题
+        this.$refs.line.style.left = `${left}px`;
+      });
+    }
   },
 };
 </script>
