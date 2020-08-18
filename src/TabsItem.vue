@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     xxx() {
-      this.eventBus.$emit('update:selected', this.name);
+      this.eventBus.$emit('update:selected', this.name, this);
     },
   },
   created() {
@@ -44,17 +44,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$primary-color: blue;
 .tabs-item {
+  display: flex;
+  align-items: center;
   flex-shrink: 0;
-  padding: 8px 0;
+  padding: 0 2em;
   cursor: pointer;
 
-  &:not(:last-child) {
-    margin-right: 24px;
-  }
-
   &.active {
-    background-color: red;
+    color: $primary-color;
+    font-weight: 500;
   }
 }
 </style>
