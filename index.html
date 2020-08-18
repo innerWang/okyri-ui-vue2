@@ -27,26 +27,19 @@
     </style>
   </head>
   <body>
-    <div id="app">
-      <!--  <o-tabs :selected="selectedTab" @update:selected="selectedTab= $event"></o-tabs> -->
-      <!-- 语法糖简写如下： 需要更改时则需要 this.$emit('update:selected', ...) 触发事件传递参数-->
-      <o-tabs :selected.sync="selectedTab">
-        <o-tabs-head>
-          <template slot="extra">
-            <o-button>额外操作</o-button>
-          </template>
-          <o-tabs-item name="hot">
-            <o-icon name="settings"></o-icon>畅销
-          </o-tabs-item>
-          <o-tabs-item name="top" disabled>头条</o-tabs-item>
-          <o-tabs-item name="rank">排名</o-tabs-item>
-        </o-tabs-head>
-        <o-tabs-body>
-          <o-tabs-pane name="hot">畅销单曲</o-tabs-pane>
-          <o-tabs-pane name="top">头条资讯</o-tabs-pane>
-          <o-tabs-pane name="rank">排名列表</o-tabs-pane>
-        </o-tabs-body>
-      </o-tabs>
+    <div id="app" style="padding: 100px;">
+      <o-popover>
+        <template v-slot:content>
+          <div>popover 内容</div>
+        </template>
+        <o-button>点我</o-button>
+      </o-popover>
+      <o-popover>
+        <template v-slot:content>
+          <div>popover 内容</div>
+        </template>
+        <o-button>点我</o-button>
+      </o-popover>
     </div>
     <script src="./src/app.js"></script>
   </body>
