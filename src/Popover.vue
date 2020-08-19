@@ -45,26 +45,28 @@ export default {
         width,
         height,
       } = triggerWrapperRef.getBoundingClientRect();
+      const { height: h } = contWrapperRef.getBoundingClientRect();
       // 页面发生滚动时，需添加滚动偏移
-      if (this.position === 'top') {
-        contWrapperRef.style.left = `${left + window.screenX}px`;
-        contWrapperRef.style.top = `${top + window.scrollY}px`;
-      } else if (this.position === 'bottom') {
-        contWrapperRef.style.left = `${left + window.screenX}px`;
-        contWrapperRef.style.top = `${top + height + window.scrollY}px`;
-      } else if (this.position === 'left') {
-        contWrapperRef.style.left = `${left + window.screenX}px`;
-        const { height: h } = contWrapperRef.getBoundingClientRect();
-        contWrapperRef.style.top = `${
-          top + window.scrollY + (height - h) / 2
-        }px`;
-      } else if (this.position === 'right') {
-        contWrapperRef.style.left = `${left + window.screenX + width}px`;
-        const { height: h } = contWrapperRef.getBoundingClientRect();
-        contWrapperRef.style.top = `${
-          top + window.scrollY + (height - h) / 2
-        }px`;
-      }
+      const positions = {
+        top: {
+          top: top + window.scrollY,
+          left: left + window.screenX,
+        },
+        bottom: {
+          top: top + height + window.scrollY,
+          left: left + window.screenX,
+        },
+        left: {
+          top: top + window.scrollY + (height - h) / 2,
+          left: left + window.screenX,
+        },
+        right: {
+          top: top + window.scrollY + (height - h) / 2,
+          left: left + window.screenX + width,
+        },
+      };
+      contWrapperRef.style.left = positions[this.position].left + 'px';
+      contWrapperRef.style.top = positions[this.position].top + 'px';
     },
     onClickDocument(e) {
       // 监听函数需要点击的内容是除了 popover 以及 content 其他的内容
