@@ -27,19 +27,59 @@
     </style>
   </head>
   <body>
-    <div id="app" style="padding: 100px;">
-      <o-popover>
-        <template v-slot:content>
-          <div>popover 内容</div>
-        </template>
-        <o-button>点我</o-button>
-      </o-popover>
-      <o-popover>
-        <template v-slot:content>
-          <div>popover 内容</div>
-        </template>
-        <o-button>点我</o-button>
-      </o-popover>
+    <div id="app">
+      <div style="padding: 100px;">
+        <o-popover position="bottom">
+          <template v-slot:content>
+            <div>popover 内容</div>
+          </template>
+          <o-button>点我</o-button>
+        </o-popover>
+        <o-popover>
+          <template v-slot:content>
+            <div>popover</div>
+          </template>
+          <o-button>点我</o-button>
+        </o-popover>
+        <o-popover position="left">
+          <template v-slot:content>
+            <div>popover</div>
+          </template>
+          <o-button>点我</o-button>
+        </o-popover>
+        <o-popover position="right">
+          <template v-slot:content>
+            <div>popover</div>
+          </template>
+          <o-button>点我</o-button>
+        </o-popover>
+      </div>
+      <div style="padding: 100px;">
+        <o-popover position="bottom" trigger="hover">
+          <template v-slot:content>
+            <div>popover 内容</div>
+          </template>
+          <o-button>点我</o-button>
+        </o-popover>
+        <o-popover trigger="hover">
+          <template v-slot:content>
+            <div>popover</div>
+          </template>
+          <o-button>点我</o-button>
+        </o-popover>
+        <o-popover position="left" trigger="hover">
+          <template v-slot:content>
+            <div>popover</div>
+          </template>
+          <o-button>点我</o-button>
+        </o-popover>
+        <o-popover position="right" trigger="hover">
+          <template v-slot:content>
+            <div>popover</div>
+          </template>
+          <o-button>点我</o-button>
+        </o-popover>
+      </div>
     </div>
     <script src="./src/app.js"></script>
   </body>
