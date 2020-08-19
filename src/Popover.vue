@@ -35,9 +35,9 @@ export default {
             width,
             height,
           } = this.$refs.triggerWrapper.getBoundingClientRect();
-
-          this.$refs.contentWrapper.style.left = `${left}px`;
-          this.$refs.contentWrapper.style.top = `${top}px`;
+          // 页面发生滚动时，需添加滚动偏移
+          this.$refs.contentWrapper.style.left = `${left + window.screenX}px`;
+          this.$refs.contentWrapper.style.top = `${top + window.scrollY}px`;
           const clickEventHandle = () => {
             this.visible = false;
             document.removeEventListener('click', clickEventHandle);
