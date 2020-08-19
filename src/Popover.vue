@@ -34,10 +34,16 @@ export default {
     onClickDocument(e) {
       // 监听函数需要点击的内容是除了 popover 以及 content 其他的内容
       if (
-        (this.$refs.popover &&
-          (this.$refs.popover.contains(e.target) ||
-            this.$refs.popover === e.target)) ||
-        this.$refs.contentWrapper.contains(e.target)
+        this.$refs.popover &&
+        (this.$refs.popover.contains(e.target) ||
+          this.$refs.popover === e.target)
+      ) {
+        return;
+      }
+      if (
+        this.$refs.contentWrapper &&
+        (this.$refs.contentWrapper.contains(e.target) ||
+          this.$refs.contentWrapper === e.target)
       ) {
         return;
       }
@@ -70,6 +76,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$border-color: #333;
+$border-radius: 4px;
 .popover {
   display: inline-block;
   vertical-align: top;
@@ -80,8 +88,31 @@ export default {
 }
 .content-wrapper {
   position: absolute;
-  border: 1px solid #666;
-  box-shadow: 0 0 3px rgba($color: #000000, $alpha: 0.5);
+  border: 1px solid $border-color;
+  filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.5));
+  background-color: #fff;
+  border-radius: $border-radius;
   transform: translateY(-100%);
+  margin-top: -10px;
+  padding: 0.5em 1em;
+  max-width: 20em;
+  word-break: break-all;
+  &::before,
+  &::after {
+    content: '';
+    border: 10px solid transparent;
+    width: 0;
+    height: 0;
+    position: absolute;
+  }
+
+  &::before {
+    top: 100%;
+    border-top-color: black;
+  }
+  &::after {
+    top: calc(100% - 1px);
+    border-top-color: white;
+  }
 }
 </style>
