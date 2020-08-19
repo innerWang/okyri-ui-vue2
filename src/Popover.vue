@@ -1,11 +1,6 @@
 <template>
-  <div class="popover" @click.stop="xxx">
-    <div
-      ref="contentWrapper"
-      class="content-wrapper"
-      v-if="visible"
-      @click.stop
-    >
+  <div class="popover" @click="handleClick" ref="popover">
+    <div ref="contentWrapper" class="content-wrapper" v-if="visible">
       <slot name="content"></slot>
     </div>
     <span ref="triggerWrapper" class="triggerWrapper">
@@ -23,27 +18,51 @@ export default {
     };
   },
   methods: {
-    xxx: function () {
-      this.visible = !this.visible;
-      if (this.visible) {
-        this.$nextTick(() => {
-          // 确保渲染后，将其移到body里面
-          document.body.appendChild(this.$refs.contentWrapper);
-          const {
-            left,
-            top,
-            width,
-            height,
-          } = this.$refs.triggerWrapper.getBoundingClientRect();
-          // 页面发生滚动时，需添加滚动偏移
-          this.$refs.contentWrapper.style.left = `${left + window.screenX}px`;
-          this.$refs.contentWrapper.style.top = `${top + window.scrollY}px`;
-          const clickEventHandle = () => {
-            this.visible = false;
-            document.removeEventListener('click', clickEventHandle);
-          };
-          document.addEventListener('click', clickEventHandle);
-        });
+    positionContent: function () {
+      // 确保渲染后，可以获取引用，此时将其移到body里面
+      document.body.appendChild(this.$refs.contentWrapper);
+      const {
+        left,
+        top,
+        width,
+        height,
+      } = this.$refs.triggerWrapper.getBoundingClientRect();
+      // 页面发生滚动时，需添加滚动偏移
+      this.$refs.contentWrapper.style.left = `${left + window.screenX}px`;
+      this.$refs.contentWrapper.style.top = `${top + window.scrollY}px`;
+    },
+    onClickDocument(e) {
+      // 监听函数需要点击的内容是除了 popover 以及 content 其他的内容
+      if (
+        (this.$refs.popover &&
+          (this.$refs.popover.contains(e.target) ||
+            this.$refs.popover === e.target)) ||
+        this.$refs.contentWrapper.contains(e.target)
+      ) {
+        return;
+      }
+      this.close();
+    },
+    open: function () {
+      this.visible = true;
+      this.$nextTick(() => {
+        this.positionContent();
+        // 此处的 this 就是指组件，而不是 document
+        document.addEventListener('click', this.onClickDocument);
+      });
+    },
+    close: function () {
+      this.visible = false;
+      document.removeEventListener('click', this.onClickDocument);
+    },
+    handleClick: function (event) {
+      // node.contains 表示传入的节点是否为该节点的后代节点
+      if (this.$refs.triggerWrapper.contains(event.target)) {
+        if (this.visible) {
+          this.close();
+        } else {
+          this.open();
+        }
       }
     },
   },
