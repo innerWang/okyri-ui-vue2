@@ -1,6 +1,11 @@
 <template>
   <div class="popover" @click="handleClick" ref="popover">
-    <div ref="contentWrapper" class="content-wrapper" v-if="visible">
+    <div
+      ref="contentWrapper"
+      class="content-wrapper"
+      v-if="visible"
+      :class="{ [`position-${position}`]: true }"
+    >
       <slot name="content"></slot>
     </div>
     <span ref="triggerWrapper" class="triggerWrapper">
@@ -17,19 +22,49 @@ export default {
       visible: false,
     };
   },
+  props: {
+    position: {
+      type: String,
+      default: 'top',
+      validator: (val) => {
+        return ['top', 'bottom', 'left', 'right'].indexOf(val) !== -1;
+      },
+    },
+  },
   methods: {
     positionContent: function () {
+      const {
+        contentWrapper: contWrapperRef,
+        triggerWrapper: triggerWrapperRef,
+      } = this.$refs;
       // 确保渲染后，可以获取引用，此时将其移到body里面
-      document.body.appendChild(this.$refs.contentWrapper);
+      document.body.appendChild(contWrapperRef);
       const {
         left,
         top,
         width,
         height,
-      } = this.$refs.triggerWrapper.getBoundingClientRect();
+      } = triggerWrapperRef.getBoundingClientRect();
       // 页面发生滚动时，需添加滚动偏移
-      this.$refs.contentWrapper.style.left = `${left + window.screenX}px`;
-      this.$refs.contentWrapper.style.top = `${top + window.scrollY}px`;
+      if (this.position === 'top') {
+        contWrapperRef.style.left = `${left + window.screenX}px`;
+        contWrapperRef.style.top = `${top + window.scrollY}px`;
+      } else if (this.position === 'bottom') {
+        contWrapperRef.style.left = `${left + window.screenX}px`;
+        contWrapperRef.style.top = `${top + height + window.scrollY}px`;
+      } else if (this.position === 'left') {
+        contWrapperRef.style.left = `${left + window.screenX}px`;
+        const { height: h } = contWrapperRef.getBoundingClientRect();
+        contWrapperRef.style.top = `${
+          top + window.scrollY + (height - h) / 2
+        }px`;
+      } else if (this.position === 'right') {
+        contWrapperRef.style.left = `${left + window.screenX + width}px`;
+        const { height: h } = contWrapperRef.getBoundingClientRect();
+        contWrapperRef.style.top = `${
+          top + window.scrollY + (height - h) / 2
+        }px`;
+      }
     },
     onClickDocument(e) {
       // 监听函数需要点击的内容是除了 popover 以及 content 其他的内容
@@ -89,14 +124,14 @@ $border-radius: 4px;
 .content-wrapper {
   position: absolute;
   border: 1px solid $border-color;
-  filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.5)); // 注意兼容性
   background-color: #fff;
   border-radius: $border-radius;
-  transform: translateY(-100%);
-  margin-top: -10px;
+
   padding: 0.5em 1em;
   max-width: 20em;
   word-break: break-all;
+
   &::before,
   &::after {
     content: '';
@@ -106,13 +141,68 @@ $border-radius: 4px;
     position: absolute;
   }
 
-  &::before {
-    top: 100%;
-    border-top-color: black;
+  &.position-top {
+    transform: translateY(-100%);
+    margin-top: -10px;
+
+    &::before {
+      top: 100%;
+      border-top-color: black;
+    }
+    &::after {
+      top: calc(100% - 1px);
+      border-top-color: white;
+    }
   }
-  &::after {
-    top: calc(100% - 1px);
-    border-top-color: white;
+
+  &.position-bottom {
+    margin-top: 10px;
+
+    &::before {
+      bottom: 100%;
+      border-bottom-color: black;
+    }
+    &::after {
+      bottom: calc(100% - 1px);
+      border-bottom-color: white;
+    }
+  }
+
+  &.position-left {
+    transform: translateX(-100%);
+    margin-left: -10px;
+    &::before,
+    &::after {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &::before {
+      left: 100%;
+      border-left-color: black;
+    }
+    &::after {
+      left: calc(100% - 1px);
+      border-left-color: white;
+    }
+  }
+
+  &.position-right {
+    margin-left: 10px;
+    &::before,
+    &::after {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &::before {
+      right: 100%;
+      border-right-color: black;
+    }
+    &::after {
+      right: calc(100% - 1px);
+      border-right-color: white;
+    }
   }
 }
 </style>
