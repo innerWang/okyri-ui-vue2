@@ -42,11 +42,13 @@ export default {
     if (this.trigger === 'click') {
       this.$refs.popover.addEventListener('click', this.handleClick);
     } else {
+      // 若想要鼠标可以移动到内容区域，可以先在 mouseleave 时进行延迟关闭，然后在光标移入内容区域时清掉定时器
       this.$refs.popover.addEventListener('mouseenter', this.open);
       this.$refs.popover.addEventListener('mouseleave', this.close);
     }
   },
   destroyed() {
+    // 此处需要自己解绑，因为当直接使用 @click 给DOM元素绑定事件时，Vue 会在元素卸载时进行解绑
     if (this.trigger === 'click') {
       this.$refs.popover.removeEventListener('click', this.handleClick);
     } else {
@@ -138,6 +140,7 @@ export default {
 <style lang="scss" scoped>
 $border-color: #333;
 $border-radius: 4px;
+
 .popover {
   display: inline-block;
   vertical-align: top;
@@ -173,10 +176,12 @@ $border-radius: 4px;
     &::before {
       top: 100%;
       border-top-color: black;
+      border-bottom: none;
     }
     &::after {
       top: calc(100% - 1px);
       border-top-color: white;
+      border-bottom: none;
     }
   }
 
@@ -186,10 +191,12 @@ $border-radius: 4px;
     &::before {
       bottom: 100%;
       border-bottom-color: black;
+      border-top: none;
     }
     &::after {
       bottom: calc(100% - 1px);
       border-bottom-color: white;
+      border-top: none;
     }
   }
 
@@ -205,10 +212,12 @@ $border-radius: 4px;
     &::before {
       left: 100%;
       border-left-color: black;
+      border-right: none;
     }
     &::after {
       left: calc(100% - 1px);
       border-left-color: white;
+      border-right: none;
     }
   }
 
@@ -223,10 +232,12 @@ $border-radius: 4px;
     &::before {
       right: 100%;
       border-right-color: black;
+      border-left: none;
     }
     &::after {
       right: calc(100% - 1px);
       border-right-color: white;
+      border-left: none;
     }
   }
 }
