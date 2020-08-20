@@ -36,8 +36,11 @@
           <o-button>点我</o-button>
         </o-popover>
         <o-popover>
-          <template v-slot:content>
-            <div>popover</div>
+          <template v-slot:content="{close}">
+            <div>
+              popover
+              <o-button @click="close">关闭</o-button>
+            </div>
           </template>
           <o-button>点我</o-button>
         </o-popover>
@@ -59,25 +62,25 @@
           <template v-slot:content>
             <div>popover 内容</div>
           </template>
-          <o-button>点我</o-button>
+          <o-button>hover我</o-button>
         </o-popover>
         <o-popover trigger="hover">
           <template v-slot:content>
             <div>popover</div>
           </template>
-          <o-button>点我</o-button>
+          <o-button>hover我</o-button>
         </o-popover>
         <o-popover position="left" trigger="hover">
           <template v-slot:content>
             <div>popover</div>
           </template>
-          <o-button>点我</o-button>
+          <o-button>hover我</o-button>
         </o-popover>
         <o-popover position="right" trigger="hover">
           <template v-slot:content>
             <div>popover</div>
           </template>
-          <o-button>点我</o-button>
+          <o-button>hover我</o-button>
         </o-popover>
       </div>
     </div>
