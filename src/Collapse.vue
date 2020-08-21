@@ -14,7 +14,7 @@ export default {
       default: false,
     },
     selected: {
-      type: String,
+      type: Array,
     },
   },
   data: function () {
@@ -29,13 +29,20 @@ export default {
   },
   mounted() {
     this.eventBus.$emit('update:selected', this.selected);
-    this.eventBus.$on('update:selected', (name) => {
-      // 支持 .sync
-      this.$emit('update:selected', name);
+    this.eventBus.$on('update:addSelected', (name) => {
+      let selected = JSON.parse(JSON.stringify(this.selected)); // 深拷贝
+      if (this.single) {
+        selected = [name];
+      } else {
+        selected.push(name);
+      }
+      this.$emit('update:selected', selected); // 支持 .sync
+      this.eventBus.$emit('update:selected', selected);
     });
-    // 支持同一时刻仅打开单个
-    this.$children.forEach((vm) => {
-      vm.single = this.single;
+    this.eventBus.$on('update:removeSelected', (name) => {
+      const selected = this.selected.filter((n) => n !== name);
+      this.$emit('update:selected', selected);
+      this.eventBus.$emit('update:selected', selected);
     });
   },
 };
