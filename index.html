@@ -27,62 +27,12 @@
     </style>
   </head>
   <body>
-    <div id="app">
-      <div style="padding: 100px;">
-        <o-popover position="bottom">
-          <template v-slot:content>
-            <div>popover 内容</div>
-          </template>
-          <o-button>点我</o-button>
-        </o-popover>
-        <o-popover>
-          <template v-slot:content="{close}">
-            <div>
-              popover
-              <o-button @click="close">关闭</o-button>
-            </div>
-          </template>
-          <o-button>点我</o-button>
-        </o-popover>
-        <o-popover position="left">
-          <template v-slot:content>
-            <div>popover</div>
-          </template>
-          <o-button>点我</o-button>
-        </o-popover>
-        <o-popover position="right">
-          <template v-slot:content>
-            <div>popover</div>
-          </template>
-          <o-button>点我</o-button>
-        </o-popover>
-      </div>
-      <div style="padding: 100px;">
-        <o-popover position="bottom" trigger="hover">
-          <template v-slot:content>
-            <div>popover 内容</div>
-          </template>
-          <o-button>hover我</o-button>
-        </o-popover>
-        <o-popover trigger="hover">
-          <template v-slot:content>
-            <div>popover</div>
-          </template>
-          <o-button>hover我</o-button>
-        </o-popover>
-        <o-popover position="left" trigger="hover">
-          <template v-slot:content>
-            <div>popover</div>
-          </template>
-          <o-button>hover我</o-button>
-        </o-popover>
-        <o-popover position="right" trigger="hover">
-          <template v-slot:content>
-            <div>popover</div>
-          </template>
-          <o-button>hover我</o-button>
-        </o-popover>
-      </div>
+    <div id="app" style="padding: 100px;">
+      <o-collapse>
+        <o-collapse-item title="标题1">内容1</o-collapse-item>
+        <o-collapse-item title="标题2">内容2</o-collapse-item>
+        <o-collapse-item title="标题3">内容3</o-collapse-item>
+      </o-collapse>
     </div>
     <script src="./src/app.js"></script>
   </body>
