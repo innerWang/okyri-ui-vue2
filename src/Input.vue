@@ -47,14 +47,7 @@ export default {
 
 <style lang="scss" scoped>
 // 使用 scoped 会自动添加一个唯一的属性，为组件内 css 指定作用域
-$height: 32px;
-$border-color: #999;
-$border-color-hover: #666;
-$border-radius: 4px;
-$font-size: 12px;
-$box-shadow-color: rgba(#000, 0.5);
-$danger-color: #f1453d;
-$box-shadow-danger-color: rgba(#f00, 0.5);
+@import './base.scss';
 .wrapper {
   font-size: $font-size;
   display: inline-flex;

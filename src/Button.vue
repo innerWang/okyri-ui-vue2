@@ -37,24 +37,25 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import './base.scss';
 .o-button {
   display: inline-flex;
   justify-content: center;
   align-items: center;
   vertical-align: middle; // 内联元素不对齐使用 vertical-align
-  height: var(--button-height);
-  font-size: var(--font-size);
+  height: $height;
+  font-size: $font-size;
   padding: 0 1em;
-  border-radius: var(--border-radius);
-  border: 1px solid var(--border-color);
-  background-color: var(--button-bg);
+  border-radius: $border-radius;
+  border: 1px solid $border-color;
+  background-color: $button-bg;
 
   &:hover {
-    border-color: var(--border-color-hover);
+    border-color: $border-color-hover;
   }
 
   &:active {
-    background-color: var(--button-active-bg);
+    background-color: $button-active-bg;
   }
 
   &:focus {
