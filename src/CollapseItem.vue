@@ -1,9 +1,9 @@
 <template>
-  <div class="collapse-item">
+  <div class="collapse-item" :data-item="name">
     <div class="title" @click="toggle">
       {{ title }}
     </div>
-    <div class="content" v-if="open">
+    <div class="content" v-if="open" ref="content">
       <slot></slot>
     </div>
   </div>
@@ -65,6 +65,7 @@ $border-radius: 4px;
     align-items: center;
     padding: 0 8px;
     cursor: pointer;
+    background: lighten($border-color, 8%);
 
     &:last-child {
       border-bottom: none;
@@ -75,8 +76,19 @@ $border-radius: 4px;
     padding: 8px;
   }
 
+  &:first-child {
+    > .title {
+      border-top-left-radius: $border-radius;
+      border-top-right-radius: $border-radius;
+    }
+  }
+
   &:last-child {
     border-bottom: none;
+    > .title:last-child {
+      border-bottom-left-radius: $border-radius;
+      border-bottom-right-radius: $border-radius;
+    }
   }
 }
 </style>

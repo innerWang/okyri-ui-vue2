@@ -47,7 +47,7 @@ export default {
       this.$refs.popover.addEventListener('mouseleave', this.close);
     }
   },
-  destroyed() {
+  beforeDestroy() {
     // 此处需要自己解绑，因为当直接使用 @click 给DOM元素绑定事件时，Vue 会在元素卸载时进行解绑
     if (this.trigger === 'click') {
       this.$refs.popover.removeEventListener('click', this.handleClick);
