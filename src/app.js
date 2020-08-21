@@ -46,7 +46,7 @@ Vue.component('o-collapse-item', CollapseItem);
 new Vue({
   el: '#app',
   data: {
-    selectedTab: 'rank',
+    selectedTab: '2',
   },
   created() {},
   methods: {
