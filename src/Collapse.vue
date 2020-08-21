@@ -30,7 +30,12 @@ export default {
   mounted() {
     this.eventBus.$emit('update:selected', this.selected);
     this.eventBus.$on('update:selected', (name) => {
+      // 支持 .sync
       this.$emit('update:selected', name);
+    });
+    // 支持同一时刻仅打开单个
+    this.$children.forEach((vm) => {
+      vm.single = this.single;
     });
   },
 };

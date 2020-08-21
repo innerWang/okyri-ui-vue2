@@ -25,6 +25,7 @@ export default {
   data: function () {
     return {
       open: false,
+      single: false,
     };
   },
   inject: ['eventBus'],
@@ -32,7 +33,9 @@ export default {
     this.eventBus &&
       this.eventBus.$on('update:selected', (name) => {
         if (name !== this.name) {
-          this.hide();
+          if (this.single) {
+            this.hide();
+          }
         } else {
           this.show();
         }
@@ -42,6 +45,8 @@ export default {
     toggle() {
       if (!this.open) {
         this.eventBus && this.eventBus.$emit('update:selected', this.name);
+      } else {
+        this.hide();
       }
     },
     hide() {
