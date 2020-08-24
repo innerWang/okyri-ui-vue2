@@ -13,7 +13,7 @@
 export default {
   name: 'OkyriTabsItem',
   inject: ['eventBus'],
-  data: function () {
+  data: function() {
     return {
       active: false,
     };
@@ -29,7 +29,7 @@ export default {
     },
   },
   computed: {
-    tabItemClasses: function () {
+    tabItemClasses: function() {
       return {
         active: this.active,
         disabled: this.disabled,

@@ -6,7 +6,7 @@
  */
 import Toast from './Toast.vue';
 
-const createToastInstance = function ({ Vue, message, propsData, onClose }) {
+const createToastInstance = function({ Vue, message, propsData, onClose }) {
   const ToastConstructor = Vue.extend(Toast);
   const vm = new ToastConstructor({
     propsData,
@@ -23,8 +23,8 @@ const createToastInstance = function ({ Vue, message, propsData, onClose }) {
 let currentToast;
 
 export default {
-  install(Vue, options) {
-    Vue.prototype.$toast = function (message, toastOptions) {
+  install(Vue) {
+    Vue.prototype.$toast = function(message, toastOptions) {
       if (currentToast) {
         currentToast.close();
       }

@@ -7,7 +7,7 @@
 <script>
 export default {
   name: 'OkyriLayout',
-  data: function () {
+  data: function() {
     return {
       layoutClass: {
         hasSider: false,

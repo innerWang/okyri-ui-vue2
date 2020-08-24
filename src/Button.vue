@@ -25,7 +25,7 @@ export default {
     iconPosition: {
       type: String,
       default: 'left',
-      validator: function (value) {
+      validator: function(value) {
         return ['left', 'right'].indexOf(value) !== -1;
       },
     },
@@ -37,7 +37,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import './base.scss';
+@import 'base';
 .o-button {
   display: inline-flex;
   justify-content: center;

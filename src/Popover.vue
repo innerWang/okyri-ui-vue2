@@ -17,7 +17,7 @@
 <script>
 export default {
   name: 'OkyriPopover',
-  data: function () {
+  data: function() {
     return {
       visible: false,
     };
@@ -57,7 +57,7 @@ export default {
     }
   },
   methods: {
-    positionContent: function () {
+    positionContent: function() {
       const {
         contentWrapper: contWrapperRef,
         triggerWrapper: triggerWrapperRef,
@@ -111,7 +111,7 @@ export default {
       }
       this.close();
     },
-    open: function () {
+    open: function() {
       this.visible = true;
       this.$nextTick(() => {
         this.positionContent();
@@ -119,11 +119,11 @@ export default {
         document.addEventListener('click', this.onClickDocument);
       });
     },
-    close: function () {
+    close: function() {
       this.visible = false;
       document.removeEventListener('click', this.onClickDocument);
     },
-    handleClick: function (event) {
+    handleClick: function(event) {
       // node.contains 表示传入的节点是否为该节点的后代节点
       if (this.$refs.triggerWrapper.contains(event.target)) {
         if (this.visible) {

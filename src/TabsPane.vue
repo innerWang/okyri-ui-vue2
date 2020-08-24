@@ -8,7 +8,7 @@
 export default {
   name: 'OkyriTabsPane',
   inject: ['eventBus'],
-  data: function () {
+  data: function() {
     return {
       active: false,
     };
@@ -20,7 +20,7 @@ export default {
     },
   },
   computed: {
-    tabPaneClasses: function () {
+    tabPaneClasses: function() {
       return {
         active: this.active,
       };

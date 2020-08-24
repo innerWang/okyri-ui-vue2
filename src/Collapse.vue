@@ -17,7 +17,7 @@ export default {
       type: Array,
     },
   },
-  data: function () {
+  data: function() {
     return {
       eventBus: new Vue(),
     };

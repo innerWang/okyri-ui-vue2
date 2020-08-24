@@ -28,7 +28,7 @@ export default {
     widePc: { type: Object, validator },
   },
   // data 里的值只会在 created 之后去读一次，后续更改需要 set 触发渲染更新
-  data: function () {
+  data: function() {
     return {
       gutter: 0,
     };

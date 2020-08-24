@@ -21,7 +21,7 @@ export default {
       },
     },
   },
-  data: function () {
+  data: function() {
     return {
       // 使用 data 进行数据中转，保证当前组件也可以访问 eventBus
       eventBus: new Vue(),

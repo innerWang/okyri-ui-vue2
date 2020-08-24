@@ -47,7 +47,7 @@ export default {
 
 <style lang="scss" scoped>
 // 使用 scoped 会自动添加一个唯一的属性，为组件内 css 指定作用域
-@import './base.scss';
+@import 'base';
 .wrapper {
   font-size: $font-size;
   display: inline-flex;

@@ -1,8 +1,29 @@
-# 基于 vue2 做的简易 UI 组件
+# okyri-ui
 
-## 使用提示
+## Project setup
+```
+yarn install
+```
 
-1. 使用本框架需要在 css 中开启 border-box
-2. 安装
-3. 引入组件和样式
-4. 设置基础样式
+### Compiles and hot-reloads for development
+```
+yarn serve
+```
+
+### Compiles and minifies for production
+```
+yarn build
+```
+
+### Run your unit tests
+```
+yarn test:unit
+```
+
+### Lints and fixes files
+```
+yarn lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).

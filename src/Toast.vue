@@ -46,7 +46,7 @@ export default {
     },
   },
   computed: {
-    toastClasses: function () {
+    toastClasses: function() {
       return { [`position-${this.position}`]: true };
     },
   },
@@ -64,11 +64,13 @@ export default {
     },
     updateStyles() {
       // 组件在 mount 后的下一步才渲染，所以需要等待 下次 DOM 更新后再去读取样式
-      this.$nextTick(function () {
+      this.$nextTick(function() {
         // 通过内联样式设置线的高度
-        this.$refs.line.style.height = window.getComputedStyle(
-          this.$refs.toast
-        ).height;
+        if (this.$refs.line) {
+          this.$refs.line.style.height = window.getComputedStyle(
+            this.$refs.toast
+          ).height;
+        }
       });
     },
     close() {
